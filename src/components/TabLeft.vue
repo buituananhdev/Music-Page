@@ -5,16 +5,16 @@
             <h2> MUSIC PAGE</h2>
         </span>
         <ul class="tableft__content">
-                <li>Kham Pha</li>
-                <li>Bang Xep Hang</li>
+                <li>Cá Nhân</li>
+                <li>Khám Phá</li>
+                <li>Bảng Xếp Hạng</li>
                 <li>Radio</li>
-                <li>Nhac Moi</li>
-                <li>The Loai</li>
+                <li>Nhạc Mới</li>
+                <li>Thể Loại</li>
                 <li>Top 100</li>
             </ul>
     </div>
 </template>
-
 <script>
 export default {
 
@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+*{
+    color: #ffff;
+}
 .tableft__container{
     width: 20%;
     height: 100vh;
@@ -32,6 +35,7 @@ export default {
 .bar_icon svg{
     width: 30px;
     margin-right: 12px;
+    fill: #ffff;
 }
 .tableft__content{
     padding-left: 12px;
@@ -46,8 +50,8 @@ export default {
 }
 .tableft__content li:hover{
     background: #85FFBD;
-    background: -webkit-linear-gradient(to right, #85FFBD, #FFFB7D); 
-    background: linear-gradient(to right, #85FFBD, #FFFB7D); 
+    background: -webkit-linear-gradient(to right, #85FFBD, rgba(224, 254, 251, 0.1)); 
+    background: linear-gradient(to right, #85FFBD, rgba(224, 254, 251, 0.1)); 
     border-radius: 12px;
 }
 </style>

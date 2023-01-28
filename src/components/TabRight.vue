@@ -1,10 +1,14 @@
 <template>
-    <div class="tableft__container">
-        <h2>DANH SACH PHAT</h2>
+    <div class="tabright__container">
+        <h3>DANH SÁCH PHÁT</h3>
         <ul class="list_songs" v-for="song in list_songs" :key="song.encodeId">
-            <li class="song" @click="ChooseSong(song)">
+            <li :class="song.encodeId" class="song" @click="ChooseSong(song)">
+                <span class="index_song">{{ ++index_song }}</span>
                 <img :src="song.thumbnailM" alt="">
-                {{ song.title }}
+                <span class="infor_song">
+                    {{ song.title }}
+                <small class="artistsNames">{{ song.artistsNames }}</small>
+                </span>
             </li>
         </ul>
     </div>
@@ -13,27 +17,42 @@
 <script>
 export default {
     props: ["list_songs"],
+    data(){
+        return{
+            index_song: -4040,
+            current_song: null,
+        }
+    },  
     methods: {
         ChooseSong(song) {
             this.$emit("ChooseSong", song);
+            document.querySelectorAll('.song').forEach((item) => {
+                item.classList.remove('active');
+            })
+            document.querySelector('.' + song.encodeId).classList.add('active');
         }
     },
 }
 </script>
 
 <style scoped>
+.active{
+    background: linear-gradient(to right, #dff6ea, #233329); 
+    border-radius: 5px;
+}
+
 img{
     width: 40px;
     margin-right: 12px;
     border-radius: 5px;
 }
-.tableft__container{
-    width: 20%;
+.tabright__container{
+    width: 100%;
     height: 90vh;
     overflow: scroll;
     margin-left: 24px;
 }
-.tableft__container::-webkit-scrollbar {
+.tabright__container::-webkit-scrollbar {
     display: none;
 }
 .list_songs{
@@ -48,9 +67,22 @@ img{
     align-items: center;
 }
 .list_songs li:hover{
-    background: #85FFBD;
-    background: -webkit-linear-gradient(to right, #85FFBD, #FFFB7D); 
-    background: linear-gradient(to right, #85FFBD, #FFFB7D); 
+    background: linear-gradient(to right, #dff6ea, #233329); 
     border-radius: 5px;
+}
+.infor_song{
+    display: flex;
+    flex-direction: column;
+}
+.artistsNames{
+    font-size: 11px;
+    font-weight: 400;
+}
+.index_song{
+    color: rgb(165, 164, 164);
+    margin-right: 18px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 900;
 }
 </style>
